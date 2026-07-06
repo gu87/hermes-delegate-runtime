@@ -6,6 +6,8 @@ Included:
 - `tools/delegate_runtime/backend.py`
 - `tools/delegate_runtime/runtime.py`
 - `tools/delegate_runtime/execution.py`
+- `tools/delegate_runtime/registry.py`
+- `tools/delegate_runtime/postprocess.py`
 - `tools/orchestrator_backend.py` compatibility shim
 
 Not included:

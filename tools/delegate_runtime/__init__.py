@@ -36,6 +36,16 @@ from tools.delegate_runtime.execution import (
     sort_results_by_task_index,
     total_duration_seconds,
 )
+from tools.delegate_runtime.registry import (
+    ActiveSubagentRegistry,
+    to_running_subagent,
+    to_subagent_state,
+)
+from tools.delegate_runtime.postprocess import (
+    build_subagent_stop_payload,
+    strip_child_entry_metadata,
+    sum_child_costs,
+)
 
 __all__ = [
     "BackendError",
@@ -68,4 +78,10 @@ __all__ = [
     "run_execution_units",
     "sort_results_by_task_index",
     "total_duration_seconds",
+    "ActiveSubagentRegistry",
+    "to_running_subagent",
+    "to_subagent_state",
+    "build_subagent_stop_payload",
+    "strip_child_entry_metadata",
+    "sum_child_costs",
 ]
