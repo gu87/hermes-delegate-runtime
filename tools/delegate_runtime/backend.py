@@ -273,6 +273,17 @@ def _extract_output(data: Dict[str, Any]) -> str:
         if isinstance(value, str):
             return value
     outbox = data.get("outbox") or data.get("outbox_json")
+    if isinstance(outbox, str):
+        # daedalus v0.3+: outbox_json 是 JSON 字符串，取 summary
+        try:
+            parsed = json.loads(outbox)
+            if isinstance(parsed, dict) and parsed.get("summary"):
+                return str(parsed["summary"])
+        except (json.JSONDecodeError, ValueError):
+            pass
+        return outbox
+    if isinstance(outbox, dict):
+        return str(outbox.get("summary") or outbox.get("content") or "")
     if isinstance(outbox, list):
         return "\n".join(str(item.get("content") if isinstance(item, dict) else item) for item in outbox)
     return ""
